@@ -1,0 +1,6 @@
+﻿  Vista.cpp
+  Main.cpp
+  Controlador.cpp
+c:\users\strike report\documents\github\taller-03\taller 3.1.0 2017\controlador.cpp(811): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
+  Taller 3.1.0 2017.vcxproj -> C:\Users\Strike Report\Documents\GitHub\Taller-03\x64\Debug\Taller 3.1.0 2017.exe
