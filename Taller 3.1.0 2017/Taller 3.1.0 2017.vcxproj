@@ -119,7 +119,6 @@
     <ClInclude Include="ArbolBB.h" />
     <ClInclude Include="arbolEnhebrado.h" />
     <ClInclude Include="Controlador.h" />
-    <ClInclude Include="nodoEnhebrado.h" />
     <ClInclude Include="Vista.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

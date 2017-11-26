@@ -29,6 +29,8 @@ public:
 	void Preorden(NodoAbb*);
 	void ImprimirPostorden();
 	void Postorden(NodoAbb*);
+	void VaciarArbol();
+	void Vacio(NodoAbb*);
 	void Eliminar(T valor);
 	bool Buscar(T valor);
 };
@@ -42,8 +44,6 @@ inline ABB<T>::ABB()
 template<typename T>
 inline ABB<T>::~ABB()
 {
-	delete raiz;
-	raiz = NULL;
 }
 
 template<typename T>
@@ -131,6 +131,28 @@ inline void ABB<T>::Postorden(NodoAbb *P)
 		Postorden(P->derecha);
 		cout << " " << P->valor << " ";
 	}
+}
+
+template<typename T>
+inline void ABB<T>::VaciarArbol()
+{
+	Vacio(raiz);
+	raiz = NULL;
+}
+
+template<typename T>
+inline void ABB<T>::Vacio(NodoAbb *nodo)
+{
+	if (nodo == NULL) {
+		return;
+	}
+	if (!nodo->izquierda) {
+		Vacio(nodo->izquierda);
+	}
+	if (!nodo->derecha) {
+		Vacio(nodo->derecha);
+	}
+	delete nodo;
 }
 
 template<typename T>

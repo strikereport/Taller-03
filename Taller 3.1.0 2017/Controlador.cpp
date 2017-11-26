@@ -71,22 +71,25 @@ void Controlador::Ingresar()
 
 		} while (isNumero(valor)|| isDecimal(valor));
 		//buscamos si se encuentra en el arbol
+		t0 = clock();
 		if (arbolstring.Buscar(valor)) {
 			//si se encuentra mandar un mensaje
-			cout << "el valor se encuentra en el arbol" << endl;
+			cout << "Dato duplicado en el ABB\n"; 
 		}
 		else {
 			//si no se encuentra se ingresa al arbol
-			t0 = clock();
 			arbolstring.Insertar(valor);
 		}
-		
 		t1 = clock();
 		cout << endl;
 		double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
-		cout << " el tiempo de ingreso en ABB es   " << tiempo << " segundos" << endl;
+		cout << " el tiempo de ingreso en ABB es " << tiempo << " segundos" << endl;
+		cout << endl;
 		t2 = clock();
-		ABHstring.insertar(valor);
+		if (!ABHstring.Buscar(valor)) {
+			//si no se encuentra se ingresa al arbol
+			ABHstring.Insertar(valor);
+		}
 		t3 = clock();
 		cout << endl;
 		double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -117,21 +120,24 @@ void Controlador::Ingresar()
 			} while (!isNumero(valor) || isDecimal(valor));
 			//buscamos si se encuentra en el arbol
 			int numero = atoi(valor.c_str());
+			t0 = clock();
 			if (arbolint.Buscar(numero)) {
 				//si se encuentra mandar un mensaje
-				cout << "el valor se encuentra en el arbol" << endl;
+				cout << "Dato duplicado en el ABB\n";
 			}
 			else {
 				//si no se encuentra se ingresa al arbol
-				t0 = clock();
 				arbolint.Insertar(numero);
 			}
 			t1 = clock();
 			cout << endl;
 			double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
-			cout << " el tiempo de ingreso en ABB es   " << tiempo << " segundos" << endl;
+			cout << " el tiempo de ingreso en ABB es " << tiempo << " segundos" << endl;
 			t2 = clock();
-			ABHint.insertar(numero);
+			if (!ABHint.Buscar(numero)) {
+				//si no se encuentra se ingresa al arbol
+				ABHint.Insertar(numero);
+			}
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -162,22 +168,24 @@ void Controlador::Ingresar()
 			} while (isNumero(valor) || !isDecimal(valor));
 			//buscamos si se encuentra en el arbol
 			double decimal = atof(valor.c_str());
+			t0 = clock();
 			if (arboldouble.Buscar(decimal)) {
 				//si se encuentra mandar un mensaje
-				cout << "el valor se encuentra en el arbol" << endl;
+				cout << "Dato duplicado en el ABB\n";
 			}
 			else {
 				//si no se encuentra se ingresa al arbol
-				t0 = clock();
 				arboldouble.Insertar(decimal);
 			}
 			t1 = clock();
 			cout << endl;
 			double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
-			cout << " el tiempo de ingreso en ABB es   " << tiempo << " segundos" << endl;
-			cout << " el tiempo de ingreso en ABB es   " << tiempo << " segundos" << endl;
+			cout << " el tiempo de ingreso en ABB es " << tiempo << " segundos" << endl;
 			t2 = clock();
-			ABHdouble.insertar(decimal);
+			if (!ABHdouble.Buscar(decimal)) {
+				//si no se encuentra se ingresa al arbol
+				ABHdouble.Insertar(decimal);
+			}
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -204,7 +212,7 @@ void Controlador::ImprimirIno()
 		cout << " el tiempo fue en inorden en ABB " << tiempo << " segundos" << endl;
 		t2 = clock();
 		cout << "Arbol impreso en Inorden en TBT" << endl;
-		ABHstring.inorden();
+		ABHstring.ImprimirInorden();
 		t3 = clock();
 		cout << endl;
 		double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -227,7 +235,7 @@ void Controlador::ImprimirIno()
 			cout << " el tiempo fue en inorden en ABB  " << tiempo << " segundos" << endl;
 			t2 = clock();
 			cout << "Arbol impreso en Inorden en TBT" << endl;
-			ABHint.inorden();
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -250,7 +258,7 @@ void Controlador::ImprimirIno()
 			cout << " el tiempo fue en inorden en ABB  " << tiempo << " segundos" << endl;
 			t2 = clock();
 			cout << "Arbol impreso en Inorden en TBT" << endl;
-			ABHdouble.inorden();
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -277,7 +285,7 @@ void Controlador::ImprimirPre()
 		cout << " el tiempo fue en pre orden  en ABB  " << tiempo << " segundos" << endl;
 		t2 = clock();
 		cout << "Arbol impreso en pre orden" << endl;
-		ABHstring.preorden();
+		
 		t3 = clock();
 		cout << endl;
 		double tiempoTBT = (double(t1 - t0) / CLOCKS_PER_SEC);
@@ -301,7 +309,7 @@ void Controlador::ImprimirPre()
 			cout << " el tiempo fue en pre orden en ABB  " << tiempo << " segundos" << endl;
 			t2 = clock();
 			cout << "Arbol impreso en pre orden en TBT" << endl;
-			ABHint.preorden();
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -325,7 +333,7 @@ void Controlador::ImprimirPre()
 			cout << " el tiempo fue en Pre Orden en ABB  " << tiempo << " segundos" << endl;
 			t2 = clock();
 			cout << "Arbol impreso en pre orden en TBT" << endl;
-			ABHdouble.preorden();
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -423,7 +431,7 @@ void Controlador::Eliminar()
 		double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
 		cout << " el tiempo de eliminacion en ABB es  " << tiempo << " segundos" << endl;
 		t2 = clock();
-		ABHstring.eliminar(valor);
+		
 		t3 = clock();
 		cout << endl;
 		double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -468,7 +476,7 @@ void Controlador::Eliminar()
 			cout << " el tiempo de eliminacion en ABB es   " << tiempo << " segundos" << endl;
 			system("pause");
 			t2 = clock();
-			ABHint.eliminar(atoi(valor.c_str()));
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -511,7 +519,7 @@ void Controlador::Eliminar()
 			double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
 			cout << " el tiempo de eliminacion en ABB es    " << tiempo << " segundos" << endl;
 			t2 = clock();
-			ABHdouble.eliminar(atof(valor.c_str()));
+			
 			t3 = clock();
 			cout << endl;
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
@@ -606,7 +614,7 @@ void Controlador::IngresoIntABB()
 			//si no esta se agrega
 			arbolint.Insertar(Numero);
 		}
-		ABHint.insertar(Numero);
+		ABHint.Insertar(Numero);
 	}
 	//una vez termina se cierra el archivo
 	TipoArchivo.close();
@@ -641,7 +649,7 @@ void Controlador::IngresoDoubleABB()
 			//si no esta se agrega
 			arboldouble.Insertar(Decimal);
 		}
-		ABHdouble.insertar(Decimal);
+		ABHdouble.Insertar(Decimal);
 	}
 	//una vez termina se cierra el archivo
 	TipoArchivo.close();
@@ -676,7 +684,7 @@ void Controlador::IngresoStringABB()
 			//si no esta se agrega
 			arbolstring.Insertar(Palabra);
 		}
-		ABHstring.insertar(Palabra);
+		ABHstring.Insertar(Palabra);
 	}
 	//una vez termina se cierra el archivo
 	TipoArchivo.close();
@@ -685,16 +693,16 @@ void Controlador::IngresoStringABB()
 void Controlador::Cambiarint()
 {
 	//eliminamos los arboles
-	arbolint.~ABB();
-	arboldouble.~ABB();
-	arbolstring.~ABB();
+	arbolint.VaciarArbol();
+	arboldouble.VaciarArbol();
+	arbolstring.VaciarArbol();
 	//validamos que solo se ingrese ese arbol
 	solodouble = false;
 	solostring = false;
 	soloint = true;
-	ABHstring.vaciar();
-	ABHint.vaciar();
-	ABHdouble.vaciar();
+	ABHstring.makeEmpty();
+	ABHint.makeEmpty();
+	ABHdouble.makeEmpty();
 	//mandamos un mensaje 
 	cout << " cambio realizado el arbol solo acepta int" << endl;
 	system("pause");
@@ -703,12 +711,12 @@ void Controlador::Cambiarint()
 void Controlador::CambiarString()
 {
 	//eliminamos los arboles
-	arbolint.~ABB();
-	arboldouble.~ABB();
-	arbolstring.~ABB();
-	ABHstring.vaciar();
-	ABHint.vaciar();
-	ABHdouble.vaciar();
+	arbolint.VaciarArbol();
+	arboldouble.VaciarArbol();
+	arbolstring.VaciarArbol();
+	ABHstring.makeEmpty();
+	ABHint.makeEmpty();
+	ABHdouble.makeEmpty();
 	//validamos que solo se ingrese ese arbol
 	solodouble = false;
 	solostring = true;
@@ -721,12 +729,12 @@ void Controlador::CambiarString()
 void Controlador::CambiarDouble()
 {
 	//eliminamos los arboles
-	arbolint.~ABB();
-	arboldouble.~ABB();
-	arbolstring.~ABB();
-	ABHstring.vaciar();
-	ABHint.vaciar();
-	ABHdouble.vaciar();
+	arbolint.VaciarArbol();
+	arboldouble.VaciarArbol();
+	arbolstring.VaciarArbol();
+	ABHstring.makeEmpty();
+	ABHint.makeEmpty();
+	ABHdouble.makeEmpty();
 	//validamos que solo se ingrese ese arbol
 	solodouble = true;
 	solostring = false;
@@ -744,16 +752,18 @@ void Controlador::VaciarArboles()
 		system("cls");
 		//tomamos el tiempo
 		t0 = clock();
-		arbolstring.~ABB();
-		cout << " Arbol Binario de busqueda Borrado" << endl;
+		arbolstring.VaciarArbol();
+		cout << " ABB Borrado" << endl;
 		t1 = clock();
 		cout << endl;
 		double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
 		cout << " el tiempo de vaciado en ABB es   " << tiempo << " segundos" << endl;
+		cout << endl;
 		//parte del arbol binario henebrado
 		unsigned t2, t3;
 		t2 = clock();
-		ABHstring.vaciar();
+		ABHstring.makeEmpty();
+		cout << " TBT Borrado" << endl;
 		t3 = clock();
 		double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
 		cout << " el tiempo de vaciado en TBT es   " << tiempo << " segundos" << endl;
@@ -766,21 +776,22 @@ void Controlador::VaciarArboles()
 			system("cls");
 			//tomamos el tiempo
 			t0 = clock();
-			arbolint.~ABB();
-			cout << " Arbol Binario de busqueda Borrado" << endl;
+			arbolint.VaciarArbol();
+			cout << " ABB Borrado" << endl;
 			t1 = clock();
 			cout << endl;
 			double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
 			cout << " el tiempo de vaciado en ABB es   " << tiempo << " segundos" << endl;
 			//parte del arbol binario henebrado
+			cout << endl;
 			unsigned t2, t3;
 			t2 = clock();
-			ABHint.vaciar();
+			ABHint.makeEmpty();
+			cout << " TBT Borrado" << endl;
 			t3 = clock();
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
 			cout << " el tiempo de vaciado en TBT es   " << tiempo << " segundos" << endl;
 			system("pause");
-
 		}
 		else {
 			unsigned t0, t1;
@@ -788,16 +799,18 @@ void Controlador::VaciarArboles()
 			system("cls");
 			//tomamos el tiempo
 			t0 = clock();
-			arboldouble.~ABB();
-			cout << " Arbol Binario de busqueda Borrado" << endl;
+			arboldouble.VaciarArbol();
+			cout << " ABB Borrado" << endl;
 			t1 = clock();
 			cout << endl;
 			double tiempo = (double(t1 - t0) / CLOCKS_PER_SEC);
 			cout << " el tiempo de vaciado en ABB es   " << tiempo << " segundos" << endl;
+			cout << endl;
 			//parte del arbol binario henebrado
 			unsigned t2, t3;
 			t2 = clock();
-			ABHdouble.vaciar();
+			ABHstring.makeEmpty();
+			cout << " TBT Borrado" << endl;
 			t3 = clock();
 			double tiempoTBT = (double(t3 - t2) / CLOCKS_PER_SEC);
 			cout << " el tiempo de vaciado en TBT es   " << tiempo << " segundos" << endl;
